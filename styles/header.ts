@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   padding: 0 4vw;
-  height: 17vw;
+  height: 5em;
   width: 100%;
   background-color: #1D1F2B;
   justify-content: space-between;
@@ -19,12 +19,12 @@ export const Search = styled.div`
   
   input[type=text] {
     position: relative;
-    padding: 1.5vw 1.3em 1.5vw 1.3em;
+    padding: .6em 1.3em .6em 1.3em;
     margin: 0 0 0 auto;
     width: 2em;
     color: #525252;
     text-transform: uppercase;
-    font-size: 16px;
+    font-size: 1em;
     font-weight: 100;
     letter-spacing: 2px;
     border: none;
@@ -34,7 +34,13 @@ export const Search = styled.div`
     outline: none;
     
     &:focus { 
-      width: 80%;
+      width: 50vw;
+    }
+    
+    @media(min-width: 768px) {
+      &:focus { 
+        width: 20em;
+      }
     }
   }
   
@@ -49,6 +55,6 @@ export const Search = styled.div`
 export const Title = styled.a`
   text-decoration: none;
   color: #FFF;
-  font-size: 5vw;
+  font-size: 1.5em;
   font-weight: 700;
 `;
