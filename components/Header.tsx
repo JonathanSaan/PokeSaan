@@ -12,9 +12,9 @@ export const Header = () => {
       </Link>
       <Search>
         <input placeholder='Search...' type="text"/>
-        <i>
+        <span>
           <BiSearch size={25} />
-        </i>
+        </span>
       </Search>
     </Container>
   );

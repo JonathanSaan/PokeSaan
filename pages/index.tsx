@@ -15,9 +15,6 @@ const Home: NextPage = () => {
       </Head>
       <Header />
       <Container>
-        <h1>
-          Test
-        </h1>
       </Container>
     </div>
   )

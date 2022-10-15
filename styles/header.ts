@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-  padding: 0 1em;
+  padding: 0 4vw;
   height: 17vw;
   width: 100%;
   background-color: #1D1F2B;
@@ -19,7 +19,7 @@ export const Search = styled.div`
   
   input[type=text] {
     position: relative;
-    padding: .6em 1.3em .6em 1.3em;
+    padding: 1.5vw 1.3em 1.5vw 1.3em;
     margin: 0 0 0 auto;
     width: 2em;
     color: #525252;
@@ -38,7 +38,7 @@ export const Search = styled.div`
     }
   }
   
-  i {
+  span {
     position: relative;
     margin: 0 .5em -.1em -2em;
     color: #1D1F2B;
