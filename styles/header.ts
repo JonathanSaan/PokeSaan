@@ -10,15 +10,15 @@ export const Container = styled.div`
   align-items: center;
 `;
 
-export const Search = styled.div`
+export const Search = styled.form`
   display: flex;
   height: 100%;
   width: 100%;
   justify-content: flex-end;
   align-items: center;
+  position: relative;
   
-  input[type=text] {
-    position: relative;
+  input {
     padding: .6em 1.3em .6em 1.3em;
     margin: 0 0 0 auto;
     width: 2em;
@@ -29,11 +29,11 @@ export const Search = styled.div`
     letter-spacing: 2px;
     border: none;
     border-radius: 5px;
-    background: linear-gradient(to right, #FFFFFF 0%,#464747 #F9F9F9 100%);
     transition: width 0.4s ease;
     outline: none;
     
     &:focus { 
+      padding: .6em 2.5em .6em 1.3em;
       width: 50vw;
     }
     
@@ -44,12 +44,11 @@ export const Search = styled.div`
     }
   }
   
-  span {
-    position: relative;
-    margin: 0 .5em -.1em -2em;
+  label {
+    position: absolute;
+    margin: 0 .5em -.1em -1em;
     color: #1D1F2B;
   }
-}
 `;
 
 export const Title = styled.a`

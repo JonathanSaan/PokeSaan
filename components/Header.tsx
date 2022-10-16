@@ -11,10 +11,10 @@ export const Header = () => {
         <Title>PokeSaan</Title>
       </Link>
       <Search>
-        <input placeholder='Search...' type="text"/>
-        <span>
+        <input id="icon-input" placeholder="Search..." type="text" />
+        <label htmlFor="icon-input">
           <BiSearch size={25} />
-        </span>
+        </label>
       </Search>
     </Container>
   );
