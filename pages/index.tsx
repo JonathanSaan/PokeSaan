@@ -3,9 +3,16 @@ import Head from "next/head";
 import Image from "next/image";
 
 import { Header } from "../components/Header";
+import { ListPokemons } from "../components/ListPokemons";
 import { Container } from "../styles/home";
+import { Footer } from "../components/Footer";
 
-const Home: NextPage = () => {
+interface Props {
+  pokemons: string;
+  LoadPokemons(): void;
+}
+
+const Home: NextPage = ({ pokemons, LoadPokemons }: Props) => {
   return (
     <div>
       <Head>
@@ -15,9 +22,11 @@ const Home: NextPage = () => {
       </Head>
       <Header />
       <Container>
+        <ListPokemons pokemons={pokemons} LoadPokemons={LoadPokemons} />
       </Container>
+      <Footer />
     </div>
-  )
-}
+  );
+};
 
 export default Home
