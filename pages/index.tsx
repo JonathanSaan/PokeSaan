@@ -1,18 +1,35 @@
-import type { NextPage } from "next";
+import type { NextPage, GetStaticProps, InferGetStaticPropsType} from "next";
 import Head from "next/head";
 import Image from "next/image";
+import axios from "axios";
 
 import { Header } from "../components/Header";
 import { ListPokemons } from "../components/ListPokemons";
 import { Container } from "../styles/home";
 import { Footer } from "../components/Footer";
 
-interface Props {
+type Props = {
   pokemons: string;
-  LoadPokemons(): void;
 }
 
-const Home: NextPage = ({ pokemons, LoadPokemons }: Props) => {
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const maxPokemons = 251;
+  const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${maxPokemons}`);
+  
+  
+  response.data.results.forEach((item, index) => {
+    item.id = index + 1;
+  });
+  
+  return {
+    props: {
+      pokemons: response.data.results,
+    },
+  };
+};
+
+const Home: NextPage = ({ pokemons }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  
   return (
     <div>
       <Head>
@@ -22,7 +39,7 @@ const Home: NextPage = ({ pokemons, LoadPokemons }: Props) => {
       </Head>
       <Header />
       <Container>
-        <ListPokemons pokemons={pokemons} LoadPokemons={LoadPokemons} />
+        <ListPokemons pokemons={pokemons} />
       </Container>
       <Footer />
     </div>

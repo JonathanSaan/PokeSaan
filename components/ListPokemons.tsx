@@ -1,24 +1,19 @@
 import { useState, useEffect } from "react";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Link from "next/link";
 import { AllPokemons, OnePokemon } from "../styles/home";
 
-interface Props {
-  pokemons: string;
-  LoadPokemons(): void;
-}
 
-export const ListPokemons = ({ pokemons, LoadPokemons }: Props) => {
-  useEffect(() => { 
-    LoadPokemons();
-  }, [] );
+export const ListPokemons = ({ pokemons }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  console.log(pokemons)
   
   return (
     <AllPokemons>
-      {pokemons.map((pokemon) => (
+      {pokemons.map((pokemon, index) => (
         <>
-          <Link key={pokemon.name} href={`pokemon/${pokemon.name}`}>
+          <Link key={index} href={`pokemon/${pokemon.name}`}>
             <OnePokemon>
-              <img src={`https://img.pokemondb.net/artwork/large/${pokemon.name}.jpg`} alt={pokemon.name} />
+              <img src={`https://cdn.traction.one/pokedex/pokemon/${index}.png`} alt={pokemon.name} />
               <h1>{pokemon.name}</h1>
             </OnePokemon>
           </Link>

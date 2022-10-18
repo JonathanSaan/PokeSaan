@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { BiSearch } from "react-icons/bi";
 import { Container, Search, Title } from "../styles/header";
 

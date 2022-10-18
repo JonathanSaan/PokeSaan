@@ -19,13 +19,17 @@ export const AllPokemons = styled.div`
 export const OnePokemon = styled.div`
   display: flex;
   flex-direction: column;
+  background-color: red;
+  border-radius: 1em;
   margin: 2vw auto;
   height: 36vw;
   width: 30vw;
   
   img {
+    margin: auto;
     height: 29vw;
     width: 29vw;
+    background-color: blue;
   }
   
   h1 {
@@ -46,8 +50,8 @@ export const OnePokemon = styled.div`
   }
   
   @media screen and (max-width: 768px) {
-    height: 52vw;
-    width: 44vw;
+    height: 57vw;
+    width: 47vw;
     
     img {
       height: 43vw;
