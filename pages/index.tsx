@@ -16,7 +16,6 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   const maxPokemons = 251;
   const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${maxPokemons}`);
   
-  
   response.data.results.forEach((item, index) => {
     item.id = index + 1;
   });
@@ -35,6 +34,9 @@ const Home: NextPage = ({ pokemons }: InferGetStaticPropsType<typeof getStaticPr
       <Head>
         <title>PokeSaan</title>
         <meta name="description" content="A website about pokemons made by JonathanSaan" />
+        <meta name="keywords" content="pokemons" />
+        <meta charset="UTF-8" />
+        <meta name="author" content="JonathanSaan" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />

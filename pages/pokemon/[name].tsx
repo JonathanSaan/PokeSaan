@@ -3,7 +3,8 @@ import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
 import axios from "axios";
 
-//import { Header } from "../../components/Header";
+import { Header } from "../../components/Header";
+
 type Props = {
   pokemons: string;
 }
@@ -33,21 +34,25 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
   }
 }
 
-const PokemonDetail: NextPage = async ({ pokemons }: Props) => {
+const PokemonDetail: NextPage = ({ pokemons }: Props) => {
+  console.log(pokemons)
   
   return (
     <>
       <Head>
-        <title>Pokemon - </title>
-        <meta name="description" content="pokemon" />
+        <title>{pokemons.name}</title>
+        <meta name="description" content="the details about pokemon" />
         <meta charset="UTF-8" />
-        <meta name="keywords" content="pokemon" />
+        <meta name="keywords" content="pokemon details" />
         <meta name="author" content="JonathanSaan" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Header />
       <div>
         <h1>
-          Pokemon
+          Pokemon {pokemons.name}
         </h1>
+        <img src={`https://cdn.traction.one/pokedex/pokemon/${pokemons.id}.png`} alt={pokemons.name} />
       </div>
     </>
   );

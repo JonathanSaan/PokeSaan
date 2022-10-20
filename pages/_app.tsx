@@ -5,12 +5,6 @@ import GlobalStyle from "../styles/global";
 
 
 function MyApp({ Component, pageProps }: AppProps) {
-  /*const [ pokemons, setPokemons ] = useState<string>([]);
-  
-  const LoadPokemons = async () => {
-    const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=30`);
-    setPokemons(response.data.results);
-  };*/
   
   return (
     <>
