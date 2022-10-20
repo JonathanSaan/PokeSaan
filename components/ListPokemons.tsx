@@ -5,15 +5,14 @@ import { AllPokemons, OnePokemon } from "../styles/home";
 
 
 export const ListPokemons = ({ pokemons }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  console.log(pokemons)
   
   return (
     <AllPokemons>
-      {pokemons.map((pokemon, index) => (
+      {pokemons.map((pokemon) => (
         <>
-          <Link key={index} href={`pokemon/${pokemon.name}`}>
+          <Link key={pokemon.id} href={`pokemon/${pokemon.name}`}>
             <OnePokemon>
-              <img src={`https://cdn.traction.one/pokedex/pokemon/${index}.png`} alt={pokemon.name} />
+              <img src={`https://cdn.traction.one/pokedex/pokemon/${pokemon.id}.png`} alt={pokemon.name} />
               <h1>{pokemon.name}</h1>
             </OnePokemon>
           </Link>
