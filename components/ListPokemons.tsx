@@ -3,6 +3,9 @@ import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Link from "next/link";
 import { AllPokemons, OnePokemon } from "../styles/home";
 
+type Props = {
+  pokemons: string;
+}
 
 export const ListPokemons = ({ pokemons }: InferGetStaticPropsType<typeof getStaticProps>) => {
   

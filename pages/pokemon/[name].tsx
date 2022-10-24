@@ -4,6 +4,8 @@ import Head from "next/head";
 import axios from "axios";
 
 import { Header } from "../../components/Header";
+import { Footer } from "../../components/Footer";
+import { Container, Data, Title } from "../../styles/pokemon";
 
 type Props = {
   pokemons: string;
@@ -48,12 +50,15 @@ const PokemonDetail: NextPage = ({ pokemons }: Props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <div>
-        <h1>
-          Pokemon {pokemons.name}
-        </h1>
+      <Container>
         <img src={`https://cdn.traction.one/pokedex/pokemon/${pokemons.id}.png`} alt={pokemons.name} />
-      </div>
+        <Data>
+          <Title>
+            {pokemons.name}
+          </Title>
+        </Data>
+      </Container>
+      <Footer />
     </>
   );
 };
