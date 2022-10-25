@@ -33,7 +33,7 @@ export const OnePokemon = styled.div`
   h1 {
     margin: auto;
     text-transform: uppercase;
-    font-size: 3vw;
+    font-size: 2vw;
     font-weight: 700;
   }
   

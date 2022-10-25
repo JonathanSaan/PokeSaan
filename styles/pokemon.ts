@@ -13,7 +13,7 @@ export const Container = styled.div`
   
   @media screen and (max-width: 768px) {
     min-height: 40vh;
-    padding: 5vw 1vw;
+    padding: 5vw 1vw 7vw 1vw;
     justify-content: flex-start;
     flex-direction: column;
     
@@ -27,11 +27,39 @@ export const Container = styled.div`
 
 export const Data = styled.div`
   margin: 0 0 0 3vw;
-  height: 10em;
+  min-height: 10em;
+  width: 30vw;
+  
+  ul {
+    margin: 2em 0 0 0;
+    list-style-type: none;
+    
+    li {
+      margin: .3em auto 0 auto;
+      width: 7.5em;
+      color: #f3f3f3;
+      
+      span {
+        margin: 0 0 0 .5em;
+      }
+    }
+  }
   
   @media screen and (max-width: 768px) {
     margin: 3em auto 0 auto;
     width: 90vw;
+    
+    ul {
+      margin: 10vw 0 0 0;
+      
+      li {
+        font-size: 5vw;
+        
+        span {
+          font-size: 5vw;
+        }
+      }
+    }
   }
 `;
 
@@ -40,10 +68,10 @@ export const Title = styled.h1`
   height: 1em;
   text-transform: uppercase;
   text-align: center;
-  font-size: 3vw;
+  font-size: 4vw;
   font-weight: 700;
   
   @media screen and (max-width: 768px) {
-    font-size: 6vw;
+    font-size: 7vw;
   }
 `;
