@@ -33,10 +33,12 @@ export const Data = styled.div`
   ul {
     margin: 2em 0 0 0;
     list-style-type: none;
+    width: 100%;
     
     li {
       margin: .3em auto 0 auto;
-      width: 7.5em;
+      width: 7em;
+      white-space: nowrap;
       color: #f3f3f3;
       
       span {
@@ -53,10 +55,10 @@ export const Data = styled.div`
       margin: 10vw 0 0 0;
       
       li {
-        font-size: 5vw;
+        font-size: 4vw;
         
         span {
-          font-size: 5vw;
+          font-size: 4vw;
         }
       }
     }
@@ -65,6 +67,7 @@ export const Data = styled.div`
 
 export const Title = styled.h1`
   color: #f3f3f3;
+  margin: 0 auto;
   height: 1em;
   text-transform: uppercase;
   text-align: center;

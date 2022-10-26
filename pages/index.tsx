@@ -14,7 +14,8 @@ type Props = {
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   //const maxPokemons = 251;
-  const maxPokemons = 24;
+  //const maxPokemons = 24;
+  const maxPokemons = 28;
   const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${maxPokemons}`);
   
   response.data.results.forEach((item, index) => {

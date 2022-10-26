@@ -56,9 +56,7 @@ const PokemonDetail: NextPage = ({ pokemons }: Props) => {
           <Title>
             {pokemons.name}
           </Title>
-          {pokemons.types.map((type) => {
-              {type.name}
-            })}
+          
           <ul>
             <li>
               Height: <span>{pokemons.height}</span> cm
@@ -66,6 +64,12 @@ const PokemonDetail: NextPage = ({ pokemons }: Props) => {
             <li>
               Weight: <span>{pokemons.weight}</span> kg
             </li>
+            {pokemons.types.map(type => (
+              <li key={type.slot}>
+                Types:
+                  <span>{type.type.name}</span>
+              </li>
+            ))}
           </ul>
         </Data>
       </Container>
