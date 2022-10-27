@@ -1,11 +1,12 @@
 import { useRouter } from "next/router";
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
+import Image from "next/image";
 import axios from "axios";
 
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
-import { Container, Data, Title, Type } from "../../styles/pokemon";
+import { Container, StyleImage, Data, Title, Type } from "../../styles/pokemon";
 
 type Props = {
   pokemons: string;
@@ -37,7 +38,6 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
 }
 
 const PokemonDetail: NextPage = ({ pokemons }: Props) => {
-  console.log(pokemons)
   
   return (
     <>
@@ -51,7 +51,14 @@ const PokemonDetail: NextPage = ({ pokemons }: Props) => {
       </Head>
       <Header />
       <Container>
-        <img src={`https://cdn.traction.one/pokedex/pokemon/${pokemons.id}.png`} alt={pokemons.name} />
+        <StyleImage>
+          <Image 
+            src={`https://cdn.traction.one/pokedex/pokemon/${pokemons.id}.png`} 
+            alt={pokemons.name}
+            height="300%"
+            width="300"
+          />
+        </StyleImage>
         <Data>
           <Title>
             {pokemons.name}

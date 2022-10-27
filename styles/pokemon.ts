@@ -7,21 +7,24 @@ export const Container = styled.div`
   justify-content: center;
   background-color: #1B1B1E;
   
-  img {
-    height: 40vw;
-  }
-  
   @media screen and (max-width: 768px) {
     min-height: 40vh;
     padding: 5vw 1vw 7vw 1vw;
     justify-content: flex-start;
     flex-direction: column;
-    
-    img {
-      margin: 0 auto;
-      height: 90vw;
-      width: 90vw;
-    }
+  }
+`;
+
+export const StyleImage = styled.div`
+  display: flex;
+  justify-content: center;
+  min-height: 20vw;
+  width: 50vw;
+  
+  @media screen and (max-width: 768px) {
+    margin: 0 auto;
+    min-height: 80vw;
+    width: 90vw;
   }
 `;
 

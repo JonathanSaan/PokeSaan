@@ -24,12 +24,6 @@ export const OnePokemon = styled.div`
   height: 26vw;
   width: 20vw;
   
-  img {
-    margin: auto;
-    height: 20vw;
-    width: 20vw;
-  }
-  
   h1 {
     margin: auto;
     text-transform: uppercase;
@@ -51,13 +45,21 @@ export const OnePokemon = styled.div`
     height: 57vw;
     width: 47vw;
     
-    img {
-      height: 40vw;
-      width: 40vw;
-    }
-    
     h1 {
       font-size: 5vw;
     }
+  }
+`;
+
+
+export const StyleImage = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 20vw;
+  
+  @media screen and (max-width: 768px) {
+    min-height: 40vw;
   }
 `;
