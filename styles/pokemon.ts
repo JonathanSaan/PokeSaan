@@ -27,23 +27,16 @@ export const Container = styled.div`
 
 export const Data = styled.div`
   margin: 0 0 0 3vw;
-  min-height: 10em;
-  width: 30vw;
+  min-height: 13em;
+  width: 35vw;
   
-  ul {
-    margin: 2em 0 0 0;
-    list-style-type: none;
-    width: 100%;
-    
-    li {
-      margin: .3em auto 0 auto;
-      width: 7em;
-      white-space: nowrap;
+  table {
+    margin: 2em auto 0 auto;
+    width: 65%;
+   
+    tr {
+      height: 2em;
       color: #f3f3f3;
-      
-      span {
-        margin: 0 0 0 .5em;
-      }
     }
   }
   
@@ -51,15 +44,12 @@ export const Data = styled.div`
     margin: 3em auto 0 auto;
     width: 90vw;
     
-    ul {
-      margin: 10vw 0 0 0;
+    table {
+      margin: 10vw auto 0 auto;
+      width: 60%;
       
-      li {
+      tr {
         font-size: 4vw;
-        
-        span {
-          font-size: 4vw;
-        }
       }
     }
   }
@@ -67,8 +57,6 @@ export const Data = styled.div`
 
 export const Title = styled.h1`
   color: #f3f3f3;
-  margin: 0 auto;
-  height: 1em;
   text-transform: uppercase;
   text-align: center;
   font-size: 4vw;
@@ -76,5 +64,22 @@ export const Title = styled.h1`
   
   @media screen and (max-width: 768px) {
     font-size: 7vw;
+  }
+`;
+
+export const Type = styled.tr`
+  flex-direction: column;
+  mad-height: 2em;
+  max-width: 4em;
+  
+  td {
+    display: inline-block;
+    background-color: #1D1F2B;
+    text-transform: uppercase;
+    text-align: center;
+    margin: .1em;
+    padding: .5em;
+    min-width: 4em;
+    border-radius: .5em;
   }
 `;

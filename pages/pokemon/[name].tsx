@@ -5,7 +5,7 @@ import axios from "axios";
 
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
-import { Container, Data, Title } from "../../styles/pokemon";
+import { Container, Data, Title, Type } from "../../styles/pokemon";
 
 type Props = {
   pokemons: string;
@@ -56,21 +56,26 @@ const PokemonDetail: NextPage = ({ pokemons }: Props) => {
           <Title>
             {pokemons.name}
           </Title>
-          
-          <ul>
-            <li>
-              Height: <span>{pokemons.height}</span> cm
-            </li>
-            <li>
-              Weight: <span>{pokemons.weight}</span> kg
-            </li>
-            {pokemons.types.map(type => (
-              <li key={type.slot}>
-                Types:
-                  <span>{type.type.name}</span>
-              </li>
-            ))}
-          </ul>
+          <table>
+            <tr>
+              <td>Height:</td>
+              <td>{pokemons.height} cm</td>
+            </tr>
+            <tr>
+              <td>Weight:</td>
+              <td>{pokemons.weight} kg</td>
+            </tr>
+            <tr>
+              <td>Types:</td>
+              <td>
+                <Type>
+                  {pokemons.types.map(type => (
+                    <td key={type.slot}>{type.type.name}</td>
+                  ))}
+                </Type>
+              </td>
+            </tr>
+          </table>
         </Data>
       </Container>
       <Footer />
