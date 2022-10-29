@@ -4,7 +4,7 @@ import Image from "next/image";
 import axios from "axios";
 
 import { Header } from "../components/Header";
-import { ListPokemons } from "../components/ListPokemons";
+import { PokemonList } from "../components/PokemonList";
 import { Container } from "../styles/home";
 import { Footer } from "../components/Footer";
 
@@ -14,11 +14,10 @@ type Props = {
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   //const maxPokemons = 251;
-  //const maxPokemons = 24;
-  const maxPokemons = 28;
+  const maxPokemons: number = 28;
   const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${maxPokemons}`);
   
-  response.data.results.forEach((item, index) => {
+  response.data.results.forEach((item: any, index: number) => {
     item.id = index + 1;
   });
   
@@ -43,7 +42,10 @@ const Home: NextPage = ({ pokemons }: InferGetStaticPropsType<typeof getStaticPr
       </Head>
       <Header />
       <Container>
-        <ListPokemons pokemons={pokemons} />
+        <PokemonList
+          pokemons={pokemons}
+          
+        />
       </Container>
       <Footer />
     </div>

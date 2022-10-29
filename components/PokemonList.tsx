@@ -1,18 +1,25 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { AllPokemons, OnePokemon, StyleImage } from "../styles/home";
 
 interface Props {
-  pokemons: string;
+  pokemons:
+    | {
+        name: string;
+        id: number;
+      }[]
+    | any;
 }
 
-export const ListPokemons = ({ pokemons }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  
+  //name: string;
+  //id: number;
+export const PokemonList: React.FC<Props> = (props) => {
+  const { pokemons } = props;
   return (
     <AllPokemons>
-      {pokemons.map((pokemon) => (
+      {pokemons.map((pokemon: any) => (
         <>
           <Link key={pokemon.id} href={`pokemon/${pokemon.name}`}>
             <OnePokemon>
