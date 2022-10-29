@@ -9,8 +9,12 @@ import { Footer } from "../../components/Footer";
 import { Container, StyleImage, Data, Title, Type } from "../../styles/pokemon";
 
 type Props = {
-  pokemons: any;
+  pokemons: {
+    name: string;
+    id: number;
+  }[];
 }
+
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const maxPokemons = 251;
@@ -34,6 +38,13 @@ export const getStaticProps: GetStaticProps<Props> = async (context: any) => {
   
   return {
     props: { pokemons: response.data },
+  }
+}
+
+interface IType {
+  slot: number,
+  type: {
+    name: string
   }
 }
 
@@ -76,7 +87,9 @@ const PokemonDetail: NextPage<Props> = ({ pokemons }: Props) => {
               <td>Types:</td>
               <td>
                 <Type>
-                  
+                  {pokemons.types.map(( type: IType ) => (
+                    <td key={type.slot}>{type.type.name}</td>
+                  ))}
                 </Type>
               </td>
             </tr>

@@ -11,7 +11,8 @@ interface Props {
         name: string;
         id: number;
       }[]
-    | any;
+    | 
+    string[];
 }
 
 export const PokemonList = (props: Props) => {
