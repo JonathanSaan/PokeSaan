@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -6,17 +6,17 @@ import { AllPokemons, OnePokemon, StyleImage } from "../styles/home";
 
 interface Props {
   pokemons:
-    | {
+    | 
+      {
         name: string;
         id: number;
       }[]
     | any;
 }
 
-  //name: string;
-  //id: number;
-export const PokemonList: React.FC<Props> = (props) => {
+export const PokemonList = (props: Props) => {
   const { pokemons } = props;
+  
   return (
     <AllPokemons>
       {pokemons.map((pokemon: any) => (
