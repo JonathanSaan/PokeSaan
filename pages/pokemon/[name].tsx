@@ -75,7 +75,7 @@ const PokemonDetail: NextPage<Props> = ({ pokemons }: Props) => {
             src={`https://cdn.traction.one/pokedex/pokemon/${pokemons.id}.png`} 
             alt={pokemons.name}
             height="300%"
-            width="300%"
+            width="300vw"
           />
         </StyleImage>
         <Data>
