@@ -18,12 +18,12 @@ export const Container = styled.div`
 export const StyleImage = styled.div`
   display: flex;
   justify-content: center;
-  min-height: 20vw;
+  height: 30vw;
   width: 50vw;
   
   @media screen and (max-width: 768px) {
     margin: 0 auto;
-    min-height: 80vw;
+    height: 80vw;
     width: 90vw;
   }
 `;
