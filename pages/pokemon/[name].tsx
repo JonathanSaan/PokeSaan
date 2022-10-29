@@ -9,10 +9,18 @@ import { Footer } from "../../components/Footer";
 import { Container, StyleImage, Data, Title, Type } from "../../styles/pokemon";
 
 type Props = {
-  pokemons: {
+  pokemons:  {
     name: string;
     id: number;
-  }[];
+    height: number;
+    weight: number;
+    types: {
+      slot: number;
+      type: {
+        name: string;
+      };
+    }[]
+  };
 }
 
 
@@ -41,11 +49,11 @@ export const getStaticProps: GetStaticProps<Props> = async (context: any) => {
   }
 }
 
-interface IType {
-  slot: number,
+type IType = {
+  slot: number;
   type: {
-    name: string
-  }
+    name: string;
+  };
 }
 
 const PokemonDetail: NextPage<Props> = ({ pokemons }: Props) => {
