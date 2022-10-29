@@ -18,8 +18,8 @@ export const Container = styled.div`
 export const StyleImage = styled.div`
   display: flex;
   justify-content: center;
-  height: 40vw;
-  width: 70vw;
+  height: 20vw;
+  width: 90vw;
   
   @media screen and (max-width: 768px) {
     margin: 0 auto;
