@@ -9,7 +9,7 @@ import { Container } from "../styles/home";
 import { Footer } from "../components/Footer";
 
 type Props = {
-  pokemons: string;
+  pokemons: string[];
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
@@ -28,7 +28,9 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   };
 };
 
-const Home: NextPage = ({ pokemons }: InferGetStaticPropsType<typeof getStaticProps>) => {
+type HomeProps = InferGetStaticPropsType<typeof getStaticProps>;
+  
+const Home: NextPage<HomeProps> = ({ pokemons }) => {
   
   return (
     <div>
@@ -36,7 +38,7 @@ const Home: NextPage = ({ pokemons }: InferGetStaticPropsType<typeof getStaticPr
         <title>PokeSaan</title>
         <meta name="description" content="A website about pokemons made by JonathanSaan" />
         <meta name="keywords" content="pokemons" />
-        <meta charset="UTF-8" />
+        <meta charSet="UTF-8" />
         <meta name="author" content="JonathanSaan" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -44,7 +46,6 @@ const Home: NextPage = ({ pokemons }: InferGetStaticPropsType<typeof getStaticPr
       <Container>
         <PokemonList
           pokemons={pokemons}
-          
         />
       </Container>
       <Footer />

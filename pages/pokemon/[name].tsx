@@ -9,14 +9,14 @@ import { Footer } from "../../components/Footer";
 import { Container, StyleImage, Data, Title, Type } from "../../styles/pokemon";
 
 type Props = {
-  pokemons: string;
+  pokemons: any;
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const maxPokemons = 251;
   const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${maxPokemons}`);
   
-  const paths = response.data.results.map((pokemon) => {
+  const paths = response.data.results.map((pokemon: any) => {
     return {
       params: { name: pokemon.name },
     }
@@ -28,7 +28,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps<Props> = async (context) => {
+export const getStaticProps: GetStaticProps<Props> = async (context: any) => {
   const name = context.params.name
   const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
   
@@ -37,14 +37,14 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
   }
 }
 
-const PokemonDetail: NextPage = ({ pokemons }: Props) => {
+const PokemonDetail: NextPage<Props> = ({ pokemons }: Props) => {
   
   return (
     <>
       <Head>
         <title>{pokemons.name}</title>
         <meta name="description" content="the details about pokemon" />
-        <meta charset="UTF-8" />
+        <meta charSet="UTF-8" />
         <meta name="keywords" content="pokemon details" />
         <meta name="author" content="JonathanSaan" />
         <link rel="icon" href="/favicon.ico" />
@@ -72,16 +72,7 @@ const PokemonDetail: NextPage = ({ pokemons }: Props) => {
               <td>Weight:</td>
               <td>{pokemons.weight} kg</td>
             </tr>
-            <tr>
-              <td>Types:</td>
-              <td>
-                <Type>
-                  {pokemons.types.map(type => (
-                    <td key={type.slot}>{type.type.name}</td>
-                  ))}
-                </Type>
-              </td>
-            </tr>
+            
           </table>
         </Data>
       </Container>
