@@ -27,7 +27,7 @@ export const StyleImage = styled.div`
     margin: 0 auto;
     height: 80vw;
     width: 90vw;
-    transform: scale(0);
+    transform: scale(0.7);
   }
 `;
 
