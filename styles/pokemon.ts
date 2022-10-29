@@ -18,7 +18,7 @@ export const Container = styled.div`
 export const StyleImage = styled.div`
   display: flex;
   justify-content: center;
-  margin: 2vw 0 0 0;
+  margin: auto 0;
   height: 30vw;
   width: 50vw;
   transform: scale(1.40);
