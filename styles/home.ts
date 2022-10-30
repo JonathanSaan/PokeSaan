@@ -56,10 +56,12 @@ export const StyleImage = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
   min-height: 20vw;
+  width: 100%;
+  transform: scale(1.2, 1.5);
   
   @media screen and (max-width: 768px) {
     min-height: 40vw;
+    transform: scale(.9);
   }
 `;
