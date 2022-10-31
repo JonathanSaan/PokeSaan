@@ -17,6 +17,7 @@ export const AllPokemons = styled.div`
 
 export const OnePokemon = styled.div`
   display: flex;
+  align-items: center;
   flex-direction: column;
   background-color: #1D1F2B;
   color: #f3f3f3;
@@ -58,10 +59,12 @@ export const StyleImage = styled.div`
   margin: 3vw auto 2em auto;
   height: 13vw;
   width: 17vw;
-  transform: scale(1.4, 1.5);
+  transform: scale(1.2, 1.5);
   
   @media screen and (max-width: 768px) {
-    height: 40vw;
-    transform: scale(.9);
+    height: 33vw;
+    width: 27vw;
+    margin: auto;
+    transform: scale(1.1);
   }
 `;
