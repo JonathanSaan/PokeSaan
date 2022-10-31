@@ -58,7 +58,7 @@ export const StyleImage = styled.div`
   margin: 5vw auto auto;
   height: 13vw;
   width: 17vw;
-  transform: scale(1.2, 1.3);
+  transform: scale(1.2, 1);
   
   @media screen and (max-width: 768px) {
     height: 33vw;
