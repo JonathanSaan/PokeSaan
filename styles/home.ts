@@ -58,12 +58,12 @@ export const StyleImage = styled.div`
   justify-content: center;
   margin: 5vw auto 2em auto;
   height: 13vw;
-  width: 19vw;
+  width: 17vw;
   transform: scale(1.2, 1.5);
   
   @media screen and (max-width: 768px) {
     height: 33vw;
-    width: 27vw;
+    width: 25vw;
     margin: auto;
     transform: scale(1.1);
   }
