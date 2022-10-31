@@ -55,13 +55,13 @@ export const OnePokemon = styled.div`
 export const StyleImage = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-height: 20vw;
-  width: 100%;
+  margin: 3vw auto 2em auto;
+  height: 14vw;
+  width: 15vw;
   transform: scale(1.2, 1.5);
   
   @media screen and (max-width: 768px) {
-    min-height: 40vw;
+    height: 40vw;
     transform: scale(.9);
   }
 `;
