@@ -56,9 +56,9 @@ export const OnePokemon = styled.div`
 export const StyleImage = styled.div`
   display: flex;
   justify-content: center;
-  margin: 3vw auto 2em auto;
+  margin: 5vw auto 2em auto;
   height: 13vw;
-  width: 17vw;
+  width: 19vw;
   transform: scale(1.2, 1.5);
   
   @media screen and (max-width: 768px) {
