@@ -56,8 +56,8 @@ export const StyleImage = styled.div`
   display: flex;
   justify-content: center;
   margin: 3vw auto 2em auto;
-  height: 14vw;
-  width: 15vw;
+  height: 12vw;
+  width: 17vw;
   transform: scale(1.2, 1.5);
   
   @media screen and (max-width: 768px) {
