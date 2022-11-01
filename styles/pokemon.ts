@@ -20,14 +20,12 @@ export const StyleImage = styled.div`
   justify-content: center;
   margin: auto 0;
   height: 30vw;
-  width: 50vw;
-  transform: scale(1.4, 1.1);
+  width: 60vw;
   
   @media screen and (max-width: 768px) {
     margin: 0 auto;
-    height: 80vw;
-    width: 90vw;
-    transform: scale(.9);
+    height: 70vw;
+    width: 80vw;
   }
 `;
 

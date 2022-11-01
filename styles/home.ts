@@ -22,7 +22,7 @@ export const OnePokemon = styled.div`
   background-color: #1D1F2B;
   color: #f3f3f3;
   margin: 1vw auto;
-  height: 26vw;
+  height: 23vw;
   width: 20vw;
   
   h1 {
@@ -55,15 +55,13 @@ export const OnePokemon = styled.div`
 export const StyleImage = styled.div`
   display: flex;
   justify-content: center;
-  margin: 5vw auto auto;
+  margin: 3vw auto auto;
   height: 13vw;
   width: 17vw;
-  transform: scale(1.2, 1);
   
   @media screen and (max-width: 768px) {
     height: 33vw;
-    width: 25vw;
+    width: 30vw;
     margin: auto;
-    transform: scale(1.1);
   }
 `;
