@@ -30,7 +30,6 @@ export const StyleImage = styled.div`
 `;
 
 export const Data = styled.div`
-  margin: 0 0 0 1vw;
   min-height: 13em;
   width: 35vw;
   
