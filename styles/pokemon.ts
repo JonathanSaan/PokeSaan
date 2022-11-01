@@ -20,7 +20,7 @@ export const StyleImage = styled.div`
   justify-content: center;
   margin: auto 0;
   height: 30vw;
-  width: 60vw;
+  width: 70vw;
   
   @media screen and (max-width: 768px) {
     margin: 0 auto;
