@@ -8,4 +8,8 @@ export default createGlobalStyle`
     padding: 0;
     margin: 0;
   }
+  
+  html {
+    background-color: #1B1B1E;
+  }
 `;

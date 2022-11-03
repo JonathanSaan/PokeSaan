@@ -1,8 +1,8 @@
 import styled from "styled-components";
+import { Pagination } from "@mui/material";
 
 export const Container = styled.div`
   padding: 0 4vw;
-  background-color: #1B1B1E;
   
   @media screen and (max-width: 768px) {
     padding: 0 1vw;
@@ -64,4 +64,11 @@ export const StyleImage = styled.div`
     width: 30vw;
     margin: auto;
   }
+`;
+
+export const PaginationStyled = styled(Pagination)`
+  display: flex;
+  margin: 1em 0;
+  color: #f3f3f3!important;
+  justify-content: center;
 `;
