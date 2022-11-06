@@ -29,7 +29,7 @@ export const PokemonList = (props: Props) => {
                   src={`https://cdn.traction.one/pokedex/pokemon/${pokemon.id}.png`}
                   alt={pokemon.name} 
                   height="130%"
-                  width="210%"
+                  width="200%"
                 />
               </StyleImage>
               <h1>{pokemon.name}</h1>

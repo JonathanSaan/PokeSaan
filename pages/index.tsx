@@ -3,9 +3,11 @@ import type { NextPage, GetStaticProps, InferGetStaticPropsType} from "next";
 import Head from "next/head";
 import Image from "next/image";
 import axios from "axios";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 import { Header } from "../components/Header";
 import { PokemonList } from "../components/PokemonList";
+import { Loading } from "../components/Loading";
 import { Container, PaginationStyled } from "../styles/home";
 import { Footer } from "../components/Footer";
 
@@ -13,39 +15,16 @@ type Props = {
   pokemons: string[];
 }
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
-  const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/`);
-  /*const [pokemons, setPokemons] = useState<any>([]);
-  const [currentPage, setCurrentPage] = useState<number>(0);
-  const response = await axios.get(`/pokemon?limit=26&offset=${currentPage}`);*/
-  
-  response.data.results.forEach((item: any, index: number) => {
-    item.id = index + 1;
-  });
-  
-  return {
-    props: {
-      pokemons: response.data.results,
-    },
-  };
-};
-
 type HomeProps = InferGetStaticPropsType<typeof getStaticProps>;
   
 const Home: NextPage<HomeProps> = ({ pokemons }) => {
-  const [page, setPage] = useState<number>(1);
-  const [totalPage, setTotalPage] = useState<number>(500);
-  
-  const handlePagination = (
-    event: ChangeEvent<unknown>,
-    value: number,
-  ) => {
-    setTotalPage(value);
+  const [posts, setPosts] = useState<string>(pokemons);
+  const [hasMore, setHasMore] = useState<boolean>(true);
+
+  const getMorePost = async () => {
+    const newPosts = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${posts.length}`);
+    setPosts((post) => [...post, ...newPosts]);
   };
-  
-  useEffect(() => {
-  }, [page]);
-  
   
   return (
     <div>
@@ -59,20 +38,32 @@ const Home: NextPage<HomeProps> = ({ pokemons }) => {
       </Head>
       <Header />
       <Container>
-        <PokemonList
-          pokemons={pokemons}
-        />
-        <PaginationStyled
-          color="primary"
-          shape="rounded"
-          defaultPage={page}
-          count={Math.ceil(totalPage / 20)}
-          onChange={handlePagination}
-        />
+        <InfiniteScroll
+          dataLength={posts.length}
+          next={getMorePost}
+          hasMore={hasMore}
+          loader={Loading}
+        >
+          <PokemonList pokemons={posts} />
+        </InfiniteScroll>
       </Container>
       <Footer />
     </div>
   );
+};
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=24`);
+  
+  response.data.results.forEach((item: any, index: number) => {
+    item.id = index + 1;
+  });
+  
+  return {
+    props: {
+      pokemons: response.data.results,
+    },
+  };
 };
 
 export default Home
