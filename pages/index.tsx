@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import type { NextPage, GetStaticProps, InferGetStaticPropsType} from "next";
 import Head from "next/head";
 import Image from "next/image";
@@ -18,12 +18,17 @@ type Props = {
 type HomeProps = InferGetStaticPropsType<typeof getStaticProps>;
   
 const Home: NextPage<HomeProps> = ({ pokemons }) => {
-  const [posts, setPosts] = useState<string>(pokemons);
+  const [posts, setPosts] = useState<string[]>(pokemons);
   const [hasMore, setHasMore] = useState<boolean>(true);
-
-  const getMorePost = async () => {
-    const newPosts = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${posts.length}`);
-    setPosts((post) => [...post, ...newPosts]);
+  let offset: number = 0;
+  
+  const getMorePokemon = async () => {
+    const newPokemon: any = [];
+    axios.get(`https://pokeapi.co/api/v2/pokemon?limit=24&offset=${offset}`).then(({ data }) => {
+      data.results.forEach((p: any) => newPokemon.push(p));
+      setPosts((oldPokemon) => [...oldPokemon, ...newPokemon]);
+    });
+    offset += 24;
   };
   
   return (
@@ -40,7 +45,7 @@ const Home: NextPage<HomeProps> = ({ pokemons }) => {
       <Container>
         <InfiniteScroll
           dataLength={posts.length}
-          next={getMorePost}
+          next={getMorePokemon}
           hasMore={hasMore}
           loader={Loading}
         >
