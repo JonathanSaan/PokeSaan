@@ -5,7 +5,7 @@ export const Loading = () => {
   return (
     <ContainerLoading>
       <CircularProgress
-        color="#1D1F2B"
+        color="#f3f3f3"
         height="4em"
         width="4em"
       />

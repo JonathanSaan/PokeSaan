@@ -25,9 +25,13 @@ const Home: NextPage<HomeProps> = ({ pokemons }) => {
   const getMorePokemon = async () => {
     const newPokemon: any = [];
     axios.get(`https://pokeapi.co/api/v2/pokemon?limit=24&offset=${offset}`).then(({ data }) => {
+      data.results.forEach((item: any, index: number) => {
+        item.id = index + 1;
+      });
       data.results.forEach((p: any) => newPokemon.push(p));
+      //pokemons.forEach((p: any) => newPokemon.push(p));
       setPosts((oldPokemon) => [...oldPokemon, ...newPokemon]);
-    });
+    })
     offset += 24;
   };
   
@@ -47,7 +51,7 @@ const Home: NextPage<HomeProps> = ({ pokemons }) => {
           dataLength={posts.length}
           next={getMorePokemon}
           hasMore={hasMore}
-          loader={Loading}
+          loader={<Loading/>}
         >
           <PokemonList pokemons={posts} />
         </InfiniteScroll>
