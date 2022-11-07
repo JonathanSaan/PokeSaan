@@ -12,7 +12,7 @@ export const Container = styled.div`
 export const AllPokemons = styled.div`
   display: flex;
   flex-wrap: wrap;
-  padding: 1vw 0;
+  margin: .5em 0;
 `;
 
 export const OnePokemon = styled.div`
