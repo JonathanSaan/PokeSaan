@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { NextPage, GetStaticProps, InferGetStaticPropsType} from "next";
 import Head from "next/head";
 import Image from "next/image";
@@ -18,14 +18,26 @@ type Props = {
 type HomeProps = InferGetStaticPropsType<typeof getStaticProps>;
   
 const Home: NextPage<HomeProps> = ({ pokemons }) => {
-  const [posts, setPosts] = useState<string[]>(pokemons);
+  const [posts, setPosts] = useState<string[]>([]);
   const [hasMore, setHasMore] = useState<boolean>(true);
+  let offset: number = 0;
   
-  const getMorePokemon = async () => {
+  const getMorePokemon = () => {
     const newPokemon: any = [];
-    pokemons.forEach((p: any) => newPokemon.push(p));
-    setPosts((oldPokemon) => [...oldPokemon, ...newPokemon]);
+    axios.get(`https://pokeapi.co/api/v2/pokemon?limit=24&offset=${offset}`).then(({ data }) => {
+      data.results.forEach((p: any, index: number) => {
+        p.id = index + 1;
+        newPokemon.push(p);
+      });
+      setPosts((oldPokemon) => [...oldPokemon, ...newPokemon]);
+    });
+    offset += 24;
   };
+  console.log(posts)
+  
+  useEffect(() => {
+    getMorePokemon();
+  }, []);
   
   return (
     <div>

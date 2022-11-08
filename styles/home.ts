@@ -3,6 +3,7 @@ import { Pagination } from "@mui/material";
 
 export const Container = styled.div`
   padding: 0 4vw;
+  min-height: 100vh;
   
   @media screen and (max-width: 768px) {
     padding: 0 1vw;
