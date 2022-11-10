@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import type { NextPage, GetStaticProps, InferGetStaticPropsType} from "next";
 import Head from "next/head";
 import Image from "next/image";
@@ -19,7 +19,8 @@ type HomeProps = InferGetStaticPropsType<typeof getStaticProps>;
   
 const Home: NextPage<HomeProps> = ({ pokemons }) => {
   const [posts, setPosts] = useState<string[]>([]);
-  let offset: number = 0;
+  const offset = useRef<number>(0);
+  console.log(offset)
   
   const getMorePokemon = async () => {
     const newPokemon: any = [];
@@ -30,10 +31,8 @@ const Home: NextPage<HomeProps> = ({ pokemons }) => {
       });
       setPosts((oldPokemon) => [...oldPokemon, ...newPokemon]);
     });
-    offset += 24;
+    offset.current += 24;
   };
-  
-  console.log(posts)
   
   useEffect(() => {
     getMorePokemon();
