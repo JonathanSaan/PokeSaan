@@ -33,6 +33,8 @@ const Home: NextPage<HomeProps> = ({ pokemons }) => {
     offset += 24;
   };
   
+  console.log(posts)
+  
   useEffect(() => {
     getMorePokemon();
   }, []);
