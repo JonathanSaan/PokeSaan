@@ -20,13 +20,14 @@ type HomeProps = InferGetStaticPropsType<typeof getStaticProps>;
 const Home: NextPage<HomeProps> = ({ pokemons }) => {
   const [posts, setPosts] = useState<string[]>([]);
   const offset = useRef<number>(0);
-  console.log(offset)
   
   const getMorePokemon = async () => {
     const newPokemon: any = [];
-    axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=24`).then(({ data }) => {
+    const regex = /\/(\d+)\//;
+    axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${offset.current}&limit=24`).then(({ data }) => {
       data.results.forEach((p: any, index: number) => {
-        p.id = index + 1;
+        const id = p.url.match(regex)[1];
+        p.id = (id);
         newPokemon.push(p);
       });
       setPosts((oldPokemon) => [...oldPokemon, ...newPokemon]);
