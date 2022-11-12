@@ -85,11 +85,11 @@ const PokemonDetail: NextPage<Props> = ({ pokemons }: Props) => {
           <table>
             <tr>
               <td>Height:</td>
-              <td>{pokemons.height} cm</td>
+              <td>{pokemons.height / 10} m</td>
             </tr>
             <tr>
               <td>Weight:</td>
-              <td>{pokemons.weight} kg</td>
+              <td>{pokemons.weight / 10} kg</td>
             </tr>
             <tr>
               <td>Types:</td>
