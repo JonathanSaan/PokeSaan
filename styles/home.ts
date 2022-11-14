@@ -12,6 +12,7 @@ export const Container = styled.div`
 
 export const AllPokemons = styled.div`
   display: flex;
+  min-height: 30rem;
   flex-wrap: wrap;
   margin: .5em 0 .7em 0;
 `;
