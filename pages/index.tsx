@@ -24,7 +24,7 @@ const Home: NextPage<HomeProps> = ({ pokemons }) => {
   const getMorePokemon = async () => {
     const newPokemon: any = [];
     const regex = /\/(\d+)\//;
-    axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${offset.current}&limit=24`).then(({ data }) => {
+    axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${offset.current}&limit=25`).then(({ data }) => {
       data.results.forEach((p: any, index: number) => {
         const id = p.url.match(regex)[1];
         p.id = (id);
@@ -32,7 +32,7 @@ const Home: NextPage<HomeProps> = ({ pokemons }) => {
       });
       setPosts((oldPokemon) => [...oldPokemon, ...newPokemon]);
     });
-    offset.current += 24;
+    offset.current += 25;
   };
   
   useEffect(() => {
@@ -66,7 +66,7 @@ const Home: NextPage<HomeProps> = ({ pokemons }) => {
 };
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=24`);
+  const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=25`);
   
   response.data.results.forEach((item: any, index: number) => {
     item.id = index + 1;
