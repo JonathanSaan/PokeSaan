@@ -11,6 +11,7 @@ export const Container = styled.div`
 
 export const Title = styled.a`
   text-decoration: none;
+  cursor: pointer;
   color: #FFF;
   font-size: 1.5em;
   font-weight: 700;
