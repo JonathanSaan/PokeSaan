@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
 import Image from "next/image";
@@ -9,7 +8,7 @@ import { Footer } from "../../components/Footer";
 import { Container, StyleImage, Data, Title, Type } from "../../styles/pokemon";
 
 type Props = {
-  pokemons:  {
+  pokemons: {
     name: string;
     id: number;
     height: number;
@@ -19,45 +18,45 @@ type Props = {
       type: {
         name: string;
       };
-    }[]
+    }[];
   };
-}
-
+};
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const maxPokemons = 251;
-  const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${maxPokemons}`);
-  
+  const response = await axios.get(
+    `https://pokeapi.co/api/v2/pokemon?limit=${maxPokemons}`
+  );
+
   const paths = response.data.results.map((pokemon: any) => {
     return {
       params: { name: pokemon.name },
-    }
-  })
-  
+    };
+  });
+
   return {
     paths,
     fallback: false,
-  }
-}
+  };
+};
 
 export const getStaticProps: GetStaticProps<Props> = async (context: any) => {
-  const name = context.params.name
-  const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
-  
+  const name = context.params.name;
+  const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
+
   return {
     props: { pokemons: response.data },
-  }
-}
+  };
+};
 
 type IType = {
   slot: number;
   type: {
     name: string;
   };
-}
+};
 
 const PokemonDetail: NextPage<Props> = ({ pokemons }: Props) => {
-  
   return (
     <>
       <Head>
@@ -71,8 +70,8 @@ const PokemonDetail: NextPage<Props> = ({ pokemons }: Props) => {
       <Header />
       <Container>
         <StyleImage>
-          <Image 
-            src={`https://cdn.traction.one/pokedex/pokemon/${pokemons.id}.png`} 
+          <Image
+            src={`https://cdn.traction.one/pokedex/pokemon/${pokemons.id}.png`}
             alt={pokemons.name}
             objectFit="contain"
             height="300%"
@@ -80,9 +79,7 @@ const PokemonDetail: NextPage<Props> = ({ pokemons }: Props) => {
           />
         </StyleImage>
         <Data>
-          <Title>
-            {pokemons.name}
-          </Title>
+          <Title>{pokemons.name}</Title>
           <table>
             <tr>
               <td>Height:</td>
@@ -96,7 +93,7 @@ const PokemonDetail: NextPage<Props> = ({ pokemons }: Props) => {
               <td>Types:</td>
               <td>
                 <Type>
-                  {pokemons.types.map(( type: IType ) => (
+                  {pokemons.types.map((type: IType) => (
                     <td key={type.slot}>{type.type.name}</td>
                   ))}
                 </Type>
@@ -110,4 +107,4 @@ const PokemonDetail: NextPage<Props> = ({ pokemons }: Props) => {
   );
 };
 
-export default PokemonDetail
+export default PokemonDetail;

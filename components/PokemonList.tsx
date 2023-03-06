@@ -6,18 +6,16 @@ import { AllPokemons, OnePokemon, StyleImage } from "../styles/home";
 
 interface Props {
   pokemons:
-    | 
-      {
+    | {
         name: string;
         id: number;
       }[]
-    | 
-    string[];
+    | string[];
 }
 
 export const PokemonList = (props: Props) => {
   const { pokemons } = props;
-  
+
   return (
     <AllPokemons>
       {pokemons.map((pokemon: any) => (
@@ -27,7 +25,7 @@ export const PokemonList = (props: Props) => {
               <StyleImage>
                 <Image
                   src={`https://cdn.traction.one/pokedex/pokemon/${pokemon.id}.png`}
-                  alt={pokemon.name} 
+                  alt={pokemon.name}
                   objectFit="contain"
                   height="130%"
                   width="200%"
