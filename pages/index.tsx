@@ -1,14 +1,13 @@
 import { useState, useRef, useEffect } from "react";
 import type { NextPage, GetStaticProps, InferGetStaticPropsType} from "next";
 import Head from "next/head";
-import Image from "next/image";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 import { Header } from "../components/Header";
 import { PokemonList } from "../components/PokemonList";
 import { Loading } from "../components/Loading";
-import { Container, PaginationStyled } from "../styles/home";
+import { Container } from "../styles/home";
 import { Footer } from "../components/Footer";
 
 type Props = {
@@ -79,4 +78,4 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   };
 };
 
-export default Home
+export default Home;

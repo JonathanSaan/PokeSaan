@@ -1,8 +1,12 @@
 const nextConfig = {
   reactStrictMode: false,
   images: {
-    formats: ['image/webp'],
-    domains: ['cdn.traction.one'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'raw.githubusercontent.com',
+      },
+    ],
   },
   compiler: {
     styledComponents: true,

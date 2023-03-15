@@ -71,7 +71,7 @@ const PokemonDetail: NextPage<Props> = ({ pokemons }: Props) => {
       <Container>
         <StyleImage>
           <Image
-            src={`https://cdn.traction.one/pokedex/pokemon/${pokemons.id}.png`}
+            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemons.id}.png`}
             alt={pokemons.name}
             objectFit="contain"
             height="300%"
@@ -81,24 +81,30 @@ const PokemonDetail: NextPage<Props> = ({ pokemons }: Props) => {
         <Data>
           <Title>{pokemons.name}</Title>
           <table>
-            <tr>
-              <td>Height:</td>
-              <td>{pokemons.height / 10} m</td>
-            </tr>
-            <tr>
-              <td>Weight:</td>
-              <td>{pokemons.weight / 10} kg</td>
-            </tr>
-            <tr>
-              <td>Types:</td>
-              <td>
-                <Type>
-                  {pokemons.types.map((type: IType) => (
-                    <td key={type.slot}>{type.type.name}</td>
-                  ))}
-                </Type>
-              </td>
-            </tr>
+            <tbody>
+              <tr>
+                <td>Height:</td>
+                <td>{pokemons.height / 10} m</td>
+              </tr>
+            </tbody>
+            <tbody>
+              <tr>
+                <td>Weight:</td>
+                <td>{pokemons.weight / 10} kg</td>
+              </tr>
+            </tbody>
+            <tbody>
+              <tr>
+                <td>Types:</td>
+                <td>
+                  <Type>
+                    {pokemons.types.map((type: IType) => (
+                      <td key={type.slot}>{type.type.name}</td>
+                    ))}
+                  </Type>
+                </td>
+              </tr>
+            </tbody>
           </table>
         </Data>
       </Container>

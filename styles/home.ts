@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Pagination } from "@mui/material";
 
 export const Container = styled.div`
   padding: 0 4vw;
@@ -60,19 +59,11 @@ export const StyleImage = styled.div`
   display: flex;
   justify-content: center;
   margin: 3vw auto auto;
-  height: 9vw;
-  width: 10vw;
+  height: 20vw;
+  width: 16vw;
   
   @media screen and (max-width: 768px) {
-    height: 33vw;
+    height: 39vw;
     width: 30vw;
-    margin: auto;
   }
-`;
-
-export const PaginationStyled = styled(Pagination)`
-  display: flex;
-  margin: 1em 0;
-  color: #f3f3f3!important;
-  justify-content: center;
 `;

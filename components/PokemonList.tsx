@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { AllPokemons, OnePokemon, StyleImage } from "../styles/home";
@@ -24,10 +22,10 @@ export const PokemonList = (props: Props) => {
             <OnePokemon>
               <StyleImage>
                 <Image
-                  src={`https://cdn.traction.one/pokedex/pokemon/${pokemon.id}.png`}
+                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}
                   alt={pokemon.name}
                   objectFit="contain"
-                  height="130%"
+                  height="150%"
                   width="200%"
                 />
               </StyleImage>
