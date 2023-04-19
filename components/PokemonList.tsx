@@ -24,6 +24,7 @@ export const PokemonList = (props: Props) => {
                 <Image
                   src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}
                   alt={pokemon.name}
+                  loading="lazy"
                   objectFit="contain"
                   height="150%"
                   width="200%"
