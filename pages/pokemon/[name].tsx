@@ -7,28 +7,30 @@ import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { Container, StyleImage, Data, Title, Type } from "../../styles/pokemon";
 
-type Props = {
-  pokemons: {
+interface Type {
+  slot: number;
+  type: {
     name: string;
-    id: number;
-    height: number;
-    weight: number;
-    types: {
-      slot: number;
-      type: {
-        name: string;
-      };
-    }[];
   };
-};
+}
+
+interface Pokemon {
+  name: string;
+  id: number;
+  height: number;
+  weight: number;
+  types: Type[];
+}
+
+interface Props {
+  pokemon: Pokemon;
+}
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const maxPokemons = 251;
-  const response = await axios.get(
-    `https://pokeapi.co/api/v2/pokemon?limit=${maxPokemons}`
-  );
+  const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${maxPokemons}`);
 
-  const paths = response.data.results.map((pokemon: any) => {
+  const paths = response.data.results.map((pokemon: Pokemon) => {
     return {
       params: { name: pokemon.name },
     };
@@ -40,27 +42,28 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps<Props> = async (context: any) => {
-  const name = context.params.name;
+export const getStaticProps: GetStaticProps<Props> = async (context) => {
+  const name = context.params?.name as string;
   const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
 
+  const pokemon: Pokemon = {
+    name: response.data.name,
+    id: response.data.id,
+    height: response.data.height,
+    weight: response.data.weight,
+    types: response.data.types,
+  };
+
   return {
-    props: { pokemons: response.data },
+    props: { pokemon },
   };
 };
 
-type IType = {
-  slot: number;
-  type: {
-    name: string;
-  };
-};
-
-const PokemonDetail: NextPage<Props> = ({ pokemons }: Props) => {
+const PokemonDetail: NextPage<Props> = ({ pokemon }) => {
   return (
     <>
       <Head>
-        <title>{pokemons.name}</title>
+        <title>{pokemon.name}</title>
         <meta name="description" content="the details about pokemon" />
         <meta charSet="UTF-8" />
         <meta name="keywords" content="pokemon details" />
@@ -71,34 +74,30 @@ const PokemonDetail: NextPage<Props> = ({ pokemons }: Props) => {
       <Container>
         <StyleImage>
           <Image
-            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemons.id}.png`}
-            alt={pokemons.name}
+            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}
+            alt={pokemon.name}
             objectFit="contain"
             height="300%"
             width="430%"
           />
         </StyleImage>
         <Data>
-          <Title>{pokemons.name}</Title>
+          <Title>{pokemon.name}</Title>
           <table>
             <tbody>
               <tr>
                 <td>Height:</td>
-                <td>{pokemons.height / 10} m</td>
+                <td>{pokemon.height / 10} m</td>
               </tr>
-            </tbody>
-            <tbody>
               <tr>
                 <td>Weight:</td>
-                <td>{pokemons.weight / 10} kg</td>
+                <td>{pokemon.weight / 10} kg</td>
               </tr>
-            </tbody>
-            <tbody>
               <tr>
                 <td>Types:</td>
                 <td>
                   <Type>
-                    {pokemons.types.map((type: IType) => (
+                    {pokemon.types.map((type) => (
                       <td key={type.slot}>{type.type.name}</td>
                     ))}
                   </Type>

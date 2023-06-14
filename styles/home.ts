@@ -58,6 +58,7 @@ export const OnePokemon = styled.div`
 export const StyleImage = styled.div`
   display: flex;
   justify-content: center;
+  color: transparent;
   margin: 3vw auto auto;
   height: 20vw;
   width: 16vw;

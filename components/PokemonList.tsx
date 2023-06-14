@@ -2,13 +2,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { AllPokemons, OnePokemon, StyleImage } from "../styles/home";
 
+interface Pokemon {
+  name: string;
+  id: number;
+}
+
 interface Props {
-  pokemons:
-    | {
-        name: string;
-        id: number;
-      }[]
-    | string[];
+  pokemons: Pokemon[];
 }
 
 export const PokemonList = (props: Props) => {
@@ -16,7 +16,7 @@ export const PokemonList = (props: Props) => {
 
   return (
     <AllPokemons>
-      {pokemons.map((pokemon: any) => (
+      {pokemons.map((pokemon) => (
         <>
           <Link key={pokemon.id} href={`pokemon/${pokemon.name}`}>
             <OnePokemon>

@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import type { NextPage, GetStaticProps, InferGetStaticPropsType} from "next";
+import type { NextPage, GetStaticProps} from "next";
 import Head from "next/head";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -10,27 +10,40 @@ import { Loading } from "../components/Loading";
 import { Container } from "../styles/home";
 import { Footer } from "../components/Footer";
 
-type Props = {
-  pokemons: string[];
+interface Pokemon {
+  id: number;
+  name: string;
+  url: string;
 }
 
-type HomeProps = InferGetStaticPropsType<typeof getStaticProps>;
-  
+type Props = {
+  pokemons: Pokemon[];
+};
+
+type HomeProps = Props;
+
 const Home: NextPage<HomeProps> = ({ pokemons }) => {
-  const [posts, setPosts] = useState<string[]>([]);
+  const [posts, setPosts] = useState<Pokemon[]>([]);
   const offset = useRef<number>(0);
   
   const getMorePokemon = async () => {
-    const newPokemon: any = [];
+    const newPokemon: Pokemon[] = [];
     const regex = /\/(\d+)\//;
-    axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${offset.current}&limit=25`).then(({ data }) => {
-      data.results.forEach((p: any, index: number) => {
-        const id = p.url.match(regex)[1];
-        p.id = (id);
-        newPokemon.push(p);
-      });
-      setPosts((oldPokemon) => [...oldPokemon, ...newPokemon]);
+    const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${offset.current}&limit=25`);
+    
+    data.results.forEach((p: Pokemon) => {
+      const matchResult = p.url.match(regex);
+      if (matchResult) {
+        const id = matchResult[1];
+        const updatedPokemon: Pokemon = {
+          ...p,
+          id: Number(id),
+        };
+        newPokemon.push(updatedPokemon);
+      }
     });
+
+    setPosts((oldPokemon) => [...oldPokemon, ...newPokemon]);
     offset.current += 25;
   };
   
@@ -67,7 +80,7 @@ const Home: NextPage<HomeProps> = ({ pokemons }) => {
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=25`);
   
-  response.data.results.forEach((item: any, index: number) => {
+  response.data.results.forEach((item: Pokemon, index: number) => {
     item.id = index + 1;
   });
   
