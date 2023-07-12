@@ -61,8 +61,8 @@ const Home: NextPage<HomeProps> = ({ pokemons }) => {
         <meta name="author" content="JonathanSaan" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
       <Container>
+        <Header />
         <InfiniteScroll
           dataLength={posts.length}
           next={getMorePokemon}
@@ -71,8 +71,8 @@ const Home: NextPage<HomeProps> = ({ pokemons }) => {
         >
           <PokemonList pokemons={posts} />
         </InfiniteScroll>
+        <Footer />
       </Container>
-      <Footer />
     </div>
   );
 };

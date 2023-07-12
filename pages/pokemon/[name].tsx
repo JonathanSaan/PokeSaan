@@ -70,8 +70,8 @@ const PokemonDetail: NextPage<Props> = ({ pokemon }) => {
         <meta name="author" content="JonathanSaan" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
       <Container>
+        <Header />
         <StyleImage>
           <Image
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}
@@ -106,8 +106,8 @@ const PokemonDetail: NextPage<Props> = ({ pokemon }) => {
             </tbody>
           </table>
         </Data>
+        <Footer />
       </Container>
-      <Footer />
     </>
   );
 };
