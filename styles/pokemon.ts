@@ -5,8 +5,8 @@ export const Container = styled.div`
   padding: 4vw 0;
   min-height: 80vh;
   justify-content: center;
-  background-color: #1B1B1E;
-  
+  background-color: #1b1b1e;
+
   @media screen and (max-width: 768px) {
     min-height: 40vh;
     padding: 5vw 1vw 7vw 1vw;
@@ -22,7 +22,7 @@ export const StyleImage = styled.div`
   margin: auto 0;
   height: 30vw;
   width: 50vw;
-  
+
   @media screen and (max-width: 768px) {
     margin: 0 auto;
     height: 70vw;
@@ -34,25 +34,25 @@ export const Data = styled.div`
   margin: 3rem 0 0 0;
   min-height: 13em;
   width: 35vw;
-  
+
   table {
     margin: 2em auto 0 auto;
     width: 65%;
-   
+
     tr {
       height: 2em;
       color: #f3f3f3;
     }
   }
-  
+
   @media screen and (max-width: 768px) {
     margin: 3em auto 0 auto;
     width: 90vw;
-    
+
     table {
       margin: 10vw auto 0 auto;
       width: 60%;
-      
+
       tr {
         font-size: 4vw;
       }
@@ -66,7 +66,7 @@ export const Title = styled.h1`
   text-align: center;
   font-size: 4vw;
   font-weight: 700;
-  
+
   @media screen and (max-width: 768px) {
     font-size: 7vw;
   }
@@ -76,10 +76,10 @@ export const Type = styled.tr`
   flex-direction: column;
   mad-height: 2em;
   max-width: 4em;
-  
+
   td {
     display: inline-block;
-    background-color: #1D1F2B;
+    background-color: #1d1f2b;
     text-transform: uppercase;
     text-align: center;
     margin: .1em;

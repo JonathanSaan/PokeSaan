@@ -4,11 +4,11 @@ import Head from "next/head";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-import { Header } from "../components/Header";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import { PokemonList } from "../components/PokemonList";
 import { Loading } from "../components/Loading";
 import { Container } from "../styles/home";
-import { Footer } from "../components/Footer";
 
 interface Pokemon {
   id: number;

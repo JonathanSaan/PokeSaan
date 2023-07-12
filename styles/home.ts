@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   padding: 0 4vw;
   min-height: 100vh;
-  
+
   @media screen and (max-width: 768px) {
     padding: 0 1vw;
   }
@@ -20,34 +20,34 @@ export const OnePokemon = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: #1D1F2B;
+  background-color: #1d1f2b;
   cursor: pointer;
   color: #f3f3f3;
   margin: 1vw auto;
   height: 19vw;
   width: 17vw;
-  
+
   h1 {
     margin: auto auto 2.5vw auto;
     text-transform: uppercase;
     font-size: 1.5vw;
     font-weight: 700;
   }
-  
+
   &:hover {
     transition: 300ms;
-    transform: scale(0.96);
+    transform: scale(.96);
   }
-  
+
   &:active {
     border: 1px solid #f3f3f3;
     transition: 300ms;
   }
-  
+
   @media screen and (max-width: 768px) {
     height: 57vw;
     width: 47vw;
-    
+
     h1 {
       margin: auto;
       font-size: 5vw;
@@ -62,7 +62,7 @@ export const StyleImage = styled.div`
   margin: 3vw auto auto;
   height: 20vw;
   width: 16vw;
-  
+
   @media screen and (max-width: 768px) {
     height: 39vw;
     width: 30vw;

@@ -1,4 +1,4 @@
-import { ContainerLoading } from "../styles/loading";
+import ContainerLoading from "../styles/loading";
 import { CircularProgress } from "react-cssfx-loading";
 
 export const Loading = () => {

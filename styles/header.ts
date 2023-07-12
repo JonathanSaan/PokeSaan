@@ -5,14 +5,14 @@ export const Container = styled.div`
   padding: 0 4vw;
   height: 5em;
   width: 100%;
-  background-color: #1D1F2B;
+  background-color: #1d1f2b;
   align-items: center;
 `;
 
 export const Title = styled.a`
   text-decoration: none;
   cursor: pointer;
-  color: #FFF;
+  color: #fff;
   font-size: 1.5em;
   font-weight: 700;
 `;

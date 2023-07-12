@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ContainerLoading = styled.div`
+const ContainerLoading = styled.div`
   display: flex;
   overflow: hidden;
   align-items: center;
@@ -8,3 +8,5 @@ export const ContainerLoading = styled.div`
   justify-content: center;
   padding: 0 0 1em 0;
 `;
+
+export default ContainerLoading;

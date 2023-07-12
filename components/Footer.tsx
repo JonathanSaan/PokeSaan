@@ -1,4 +1,4 @@
-import { Container } from "../styles/footer";
+import Container from "../styles/footer";
 
 export const Footer = () => {
   return (
@@ -7,3 +7,5 @@ export const Footer = () => {
     </Container>
   );
 };
+
+export default Footer;

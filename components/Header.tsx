@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Container, Title } from "../styles/header";
 
-export const Header = () => {
+const Header = () => {
   return (
     <Container>
       <Link href="/">
@@ -10,3 +10,5 @@ export const Header = () => {
     </Container>
   );
 };
+
+export default Header;
