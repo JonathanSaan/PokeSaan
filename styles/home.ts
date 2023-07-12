@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  padding: 0 4vw;
+  position: relative;
+  padding: 5vw 0;
   min-height: 100vh;
 
   @media screen and (max-width: 768px) {
@@ -13,11 +14,13 @@ export const AllPokemons = styled.div`
   display: flex;
   min-height: 30vh;
   flex-wrap: wrap;
+  padding: 0 4vw;
   margin: .5em 0 .7em 0;
 `;
 
 export const OnePokemon = styled.div`
   display: flex;
+  index: 1;
   align-items: center;
   flex-direction: column;
   background-color: #1d1f2b;

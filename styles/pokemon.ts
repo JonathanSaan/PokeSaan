@@ -2,8 +2,9 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
+  position: relative;
   padding: 4vw 0;
-  min-height: 80vh;
+  min-height: 100vh;
   justify-content: center;
   background-color: #1b1b1e;
 
@@ -31,7 +32,7 @@ export const StyleImage = styled.div`
 `;
 
 export const Data = styled.div`
-  margin: 3rem 0 0 0;
+  margin: 6rem 0 0 0;
   min-height: 13em;
   width: 35vw;
 
