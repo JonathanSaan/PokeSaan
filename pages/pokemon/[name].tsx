@@ -59,11 +59,11 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
   };
 };
 
-const PokemonDetail: NextPage<Props> = ({ pokemon }) => {
+const DetailPokemon: NextPage<Props> = ({ pokemon }) => {
   return (
     <>
       <Head>
-        <title>{pokemon.name}</title>
+        <title>{pokemon.name} - PokeSaan</title>
         <meta name="description" content="the details about pokemon" />
         <meta charSet="UTF-8" />
         <meta name="keywords" content="pokemon details" />
@@ -112,4 +112,4 @@ const PokemonDetail: NextPage<Props> = ({ pokemon }) => {
   );
 };
 
-export default PokemonDetail;
+export default DetailPokemon;

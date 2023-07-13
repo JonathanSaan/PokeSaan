@@ -5,9 +5,10 @@ import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 import Header from "../components/Header";
+import Search from "../components/Search";
+import PokemonList from "../components/PokemonList";
 import Footer from "../components/Footer";
-import { PokemonList } from "../components/PokemonList";
-import { Loading } from "../components/Loading";
+import Loading from "../components/Loading";
 import { Container } from "../styles/home";
 
 interface Pokemon {
@@ -24,13 +25,14 @@ type HomeProps = Props;
 
 const Home: NextPage<HomeProps> = ({ pokemons }) => {
   const [posts, setPosts] = useState<Pokemon[]>([]);
+  const hasMorePokemons = useRef(true);
   const offset = useRef<number>(0);
-  
+
   const getMorePokemon = async () => {
     const newPokemon: Pokemon[] = [];
     const regex = /\/(\d+)\//;
     const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${offset.current}&limit=25`);
-    
+
     data.results.forEach((p: Pokemon) => {
       const matchResult = p.url.match(regex);
       if (matchResult) {
@@ -46,7 +48,7 @@ const Home: NextPage<HomeProps> = ({ pokemons }) => {
     setPosts((oldPokemon) => [...oldPokemon, ...newPokemon]);
     offset.current += 25;
   };
-  
+
   useEffect(() => {
     getMorePokemon();
   }, []);
@@ -66,9 +68,10 @@ const Home: NextPage<HomeProps> = ({ pokemons }) => {
         <InfiniteScroll
           dataLength={posts.length}
           next={getMorePokemon}
-          hasMore={true}
+          hasMore={hasMorePokemons.current}
           loader={<Loading/>}
         >
+          <Search setPosts={setPosts} pokemons={pokemons} />
           <PokemonList pokemons={posts} />
         </InfiniteScroll>
         <Footer />
@@ -79,16 +82,18 @@ const Home: NextPage<HomeProps> = ({ pokemons }) => {
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=25`);
-  
-  response.data.results.forEach((item: Pokemon, index: number) => {
-    item.id = index + 1;
-  });
-  
+
+  const pokemons: Pokemon[] = response.data.results.map((item: Pokemon, index: number) => ({
+    ...item,
+    id: index + 1,
+  }));
+
   return {
     props: {
-      pokemons: response.data.results,
+      pokemons,
     },
   };
 };
+
 
 export default Home;

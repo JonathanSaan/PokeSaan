@@ -11,7 +11,7 @@ interface Props {
   pokemons: Pokemon[];
 }
 
-export const PokemonList = (props: Props) => {
+const PokemonList = (props: Props) => {
   const { pokemons } = props;
 
   return (
@@ -38,3 +38,5 @@ export const PokemonList = (props: Props) => {
     </AllPokemons>
   );
 };
+
+export default PokemonList;
