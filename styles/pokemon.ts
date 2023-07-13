@@ -9,9 +9,7 @@ export const Container = styled.div`
   background-color: #1b1b1e;
 
   @media screen and (max-width: 768px) {
-    min-height: 40vh;
-    padding: 5vw 1vw 7vw 1vw;
-    justify-content: flex-start;
+    padding: 0 0 5vw 0;
     flex-direction: column;
   }
 `;
@@ -23,6 +21,10 @@ export const StyleImage = styled.div`
   margin: auto 0;
   height: 30vw;
   width: 50vw;
+  
+  img {
+    pointer-events: none;
+  }
 
   @media screen and (max-width: 768px) {
     margin: 0 auto;

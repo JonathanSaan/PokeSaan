@@ -4,12 +4,16 @@ export const Container = styled.div`
   display: flex;
   position: absolute;
   top: 0;
-  index: 2;
-  padding: 0 4vw;
+  padding: 0 2vw;
   height: 5em;
   width: 100%;
   background-color: #1d1f2b;
+  justify-content: space-between;
   align-items: center;
+
+  @media screen and (max-width: 768px) {
+    padding: 0 4vw;
+  }
 `;
 
 export const Title = styled.a`
