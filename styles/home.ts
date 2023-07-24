@@ -34,10 +34,11 @@ export const SearchInput = styled.input`
 
 export const AllPokemons = styled.div`
   display: flex;
-  min-height: 20vh;
+  min-height: 26vh;
+  height: auto;
   flex-wrap: wrap;
   padding: 0 4vw 0 5vw;
-  margin: 0 auto .7em auto;
+  margin: 0 auto;
 
   @media screen and (max-width: 768px) {
     padding: 0 4vw;

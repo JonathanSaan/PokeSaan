@@ -25,7 +25,7 @@ type HomeProps = Props;
 
 const Home: NextPage<HomeProps> = ({ pokemons }) => {
   const [posts, setPosts] = useState<Pokemon[]>([]);
-  const hasMorePokemons = useRef(true);
+  const [hasMorePokemons, setHasMorePokemons] = useState(true);
   const offset = useRef<number>(0);
 
   const getMorePokemon = async () => {
@@ -65,13 +65,13 @@ const Home: NextPage<HomeProps> = ({ pokemons }) => {
       </Head>
       <Container>
         <Header />
+        <Search setPosts={setPosts} pokemons={pokemons} setHasMorePokemons={setHasMorePokemons} />
         <InfiniteScroll
           dataLength={posts.length}
           next={getMorePokemon}
-          hasMore={hasMorePokemons.current}
+          hasMore={hasMorePokemons}
           loader={<Loading/>}
         >
-          <Search setPosts={setPosts} pokemons={pokemons} />
           <PokemonList pokemons={posts} />
         </InfiniteScroll>
         <Footer />

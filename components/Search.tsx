@@ -1,4 +1,4 @@
-import { useState, ChangeEvent } from "react";
+import { useState, useEffect, ChangeEvent } from "react";
 import { SearchForm, SearchInput } from "../styles/home";
 
 interface Pokemon {
@@ -10,32 +10,36 @@ interface Pokemon {
 interface Props {
   setPosts: (value: Pokemon[]) => void;
   pokemons: Pokemon[];
+  setHasMorePokemons: (value: boolean) => void;
 }
 
 const Search = (props: Props) => {
-  const { setPosts, pokemons } = props;
+  const { setPosts, pokemons, setHasMorePokemons } = props;
 
   const [typedSearch, setTypedSearch] = useState<string>("");
 
-  const searchPokemon = (event: ChangeEvent<HTMLInputElement>) => {
-    const name = event.target.value;
-    setTypedSearch(name);
-
-    const lowerSearch = typedSearch.toLowerCase();
+  useEffect(() => {
+    const lowerSearch = typedSearch.trim().toLowerCase();
     const filteredPokemons = pokemons.filter((pokemon) =>
       pokemon.name.toLowerCase().includes(lowerSearch)
     );
-
+    console.log(filteredPokemons)
+    setHasMorePokemons(filteredPokemons.length > 10);
     setPosts(filteredPokemons);
+  }, [typedSearch, pokemons, setPosts, setHasMorePokemons]);
+
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const name = event.target.value;
+    setTypedSearch(name);
   };
 
   return (
     <SearchForm>
       <SearchInput
         type="text"
-        value={typedSearch}
+        value={typedSearch === " " ? "" : typedSearch}
         placeholder="Search"
-        onChange={searchPokemon}
+        onChange={handleInputChange}
       />
     </SearchForm>
   );
