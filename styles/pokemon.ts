@@ -82,6 +82,7 @@ export const Type = styled.tr`
 
   td {
     display: inline-block;
+    cursor: default;
     background-color: #1d1f2b;
     text-transform: uppercase;
     text-align: center;

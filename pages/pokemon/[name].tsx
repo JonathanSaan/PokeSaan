@@ -63,7 +63,7 @@ const DetailPokemon: NextPage<Props> = ({ pokemon }) => {
   return (
     <>
       <Head>
-        <title>{pokemon.name} - PokeSaan</title>
+        <title>{pokemon.name ? `${pokemon.name} - ` : ""}PokeSaan</title>
         <meta name="description" content="the details about pokemon" />
         <meta charSet="UTF-8" />
         <meta name="keywords" content="pokemon details" />
@@ -74,8 +74,8 @@ const DetailPokemon: NextPage<Props> = ({ pokemon }) => {
         <Header />
         <StyleImage>
           <Image
-            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}
-            alt={pokemon.name}
+            src={pokemon.id ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png` : ""}
+            alt={pokemon.name ? pokemon.name : "details about pokemon"}
             objectFit="contain"
             height="300%"
             width="430%"
