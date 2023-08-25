@@ -23,7 +23,6 @@ const Search = (props: Props) => {
     const filteredPokemons = pokemons.filter((pokemon) =>
       pokemon.name.toLowerCase().includes(lowerSearch)
     );
-    console.log(filteredPokemons)
     setHasMorePokemons(filteredPokemons.length > 10);
     setPosts(filteredPokemons);
   }, [typedSearch, pokemons, setPosts, setHasMorePokemons]);
