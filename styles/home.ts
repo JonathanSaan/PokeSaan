@@ -51,6 +51,7 @@ export const OnePokemon = styled.div`
   align-items: center;
   flex-direction: column;
   background-color: #1d1f2b;
+  border: 1px solid #1d1f2b;
   cursor: pointer;
   color: #f3f3f3;
   margin: 0 .5vw 1vw .5vw;
@@ -66,12 +67,12 @@ export const OnePokemon = styled.div`
 
   &:hover {
     transition: 300ms;
-    transform: scale(.96);
+    border: 1px solid #f3f3f3;
   }
 
   &:active {
-    border: 1px solid #f3f3f3;
     transition: 300ms;
+    transform: scale(.96);
   }
 
   @media screen and (max-width: 768px) {
