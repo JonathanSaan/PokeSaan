@@ -98,7 +98,7 @@ const DetailPokemon: NextPage<Props> = ({ pokemon }) => {
                 <td>
                   <Type>
                     {pokemon.types.map((type) => (
-                      <td key={type.slot}>{type.type.name}</td>
+                      <span key={type.slot}>{type.type.name}</span>
                     ))}
                   </Type>
                 </td>
